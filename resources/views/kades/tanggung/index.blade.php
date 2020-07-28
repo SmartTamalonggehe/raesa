@@ -115,6 +115,10 @@
     $('#exportWord').on('click',function(){
         let tahun=$('#tahun').val();
         let bulan=$('#bulan').val();
+        if (!tahun) {
+            alert('Tahun Tidak Boleh Kosong')
+            return 0;
+        }
         window.location.href='tanggungExport?tahun='+ tahun +'&bulan='+ bulan
     })
   ;(function($) {

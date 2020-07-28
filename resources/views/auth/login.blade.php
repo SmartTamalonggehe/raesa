@@ -1,3 +1,23 @@
+@php
+
+    $user= auth()->user();
+    if ($user) {
+        $user= auth()->user()->roles->first()->name;
+
+        if ($user) {
+            if ($user=='Admin'){
+                header('Location: /admin');
+                exit;
+            }
+            if ($user=='Kades'){
+                header('Location: /kades');
+                exit;
+            }
+        }
+    }
+
+@endphp
+
 @include('components.head')
 
 <body class="cui-config-borderless cui-menu-colorful cui-menu-left-shadow">
@@ -29,12 +49,12 @@
           </a>
           <br />
           <br />
-          <a
+          {{-- <a
             href="javascript: void(0);"
             class="btn btn-sm btn-outline ml-3 random-bg-image mb-3"
             data-img="1"
             >Ganti Background</a
-          >
+          > --}}
         </div>
       </div>
     </div>
