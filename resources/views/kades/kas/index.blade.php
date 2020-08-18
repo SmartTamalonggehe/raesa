@@ -15,9 +15,10 @@
   </div>
   <div class="card-body">
     <div class="row">
-        <h5>Tampilkan Berdasarkan</h5>      
-      
-      <div class="col-md-3">
+
+      <h6 class="mt-2">Tampilkan Berdasarkan</h6>
+
+      <div class="col-md-2">
         <select name="tahun" id="tahun" class="select2">
           <option value="">Pilih Tahun</option>
           @foreach ($tahun as $item)
@@ -42,12 +43,29 @@
           <option value="12">Desember</option>
         </select>
       </div>
+      <div class="col-md-3">
+        <select name="bulan_akhir" id="bulan_akhir" class="select2">
+          <option value="">Pilih Bulan</option>
+          <option value="01">Januari</option>
+          <option value="02">Februari</option>
+          <option value="03">Maret</option>
+          <option value="04">April</option>
+          <option value="05">Mei</option>
+          <option value="06">Juni</option>
+          <option value="07">Juli</option>
+          <option value="08">Agustus</option>
+          <option value="09">September</option>
+          <option value="10">Oktober</option>
+          <option value="11">November</option>
+          <option value="12">Desember</option>
+        </select>
+      </div>
       <div class="col-md-2">
         <button id="exportExcel" class="btn btn-primary">Export Excel</button>
       </div>
       <div class="col-lg-12">
         <p class="text-muted">
-          
+
         </p>
         <div class="mb-5">
           <div id="tampil"></div>
@@ -82,12 +100,14 @@
         $('#bulan').on('change', function(){
             let value=$(this).val();
             let tahun=$('#tahun').val();
+            let bulan_akhir=$('#bulan_akhir').val();
             $.ajax({
                 type : 'get',
                 url : '',
                 data:{
                   'bulan':value,
-                  'tahun':tahun
+                  'tahun':tahun,
+                  'bulan_akhir':bulan_akhir,
                   },
                 success:function(data){
                   $('#tampil').html(data);
@@ -97,12 +117,31 @@
         $('#tahun').on('change', function(){
             let value=$(this).val();
             let bulan=$('#bulan').val()
+            let bulan_akhir=$('#bulan_akhir').val()
             $.ajax({
                 type : 'get',
                 url : '',
                 data:{
                   'tahun':value,
-                  'bulan':bulan
+                  'bulan':bulan,
+                  'bulan_akhir':bulan_akhir,
+                  },
+                success:function(data){
+                  $('#tampil').html(data);
+                }
+            });
+        })
+        $('#bulan_akhir').on('change', function(){
+            let value=$(this).val();
+            let bulan=$('#bulan').val()
+            let tahun=$('#tahun').val();
+            $.ajax({
+                type : 'get',
+                url : '',
+                data:{
+                  'bulan_akhir':value,
+                  'bulan':bulan,
+                  'tahun':tahun,
                   },
                 success:function(data){
                   $('#tampil').html(data);
@@ -114,7 +153,8 @@
         $('#exportExcel').on('click',function(){
           let tahun=$('#tahun').val();
           let bulan=$('#bulan').val();
-          window.location.href='kasExport?tahun='+ tahun +'&bulan='+ bulan 
+          let bulan_akhir=$('#bulan_akhir').val();
+          window.location.href='kasExport?tahun='+ tahun +'&bulan='+ bulan +'&bulan_akhir='+ bulan_akhir
         })
     });
 </script>

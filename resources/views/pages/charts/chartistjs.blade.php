@@ -1,4 +1,4 @@
-@extends ('layouts.app')
+@extends ('layoutku.app')
 
 @section('content')
 <!-- START: charts/chartistjs -->

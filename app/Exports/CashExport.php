@@ -33,11 +33,13 @@ class CashExport implements FromView, WithDrawings, ShouldAutoSize, WithEvents
 
     private $tahun;
     private $bulan;
+    private $bulan_akhir;
 
-    public function __construct($tahun,$bulan)
+    public function __construct($tahun,$bulan,$bulan_akhir)
     {
          $this->tahun = $tahun;
          $this->bulan = $bulan;
+         $this->bulan_akhir = $bulan_akhir;
     }
 
     public function view(): View
@@ -54,8 +56,10 @@ class CashExport implements FromView, WithDrawings, ShouldAutoSize, WithEvents
             ->whereYear('tgl_kas',$this->tahun)
             ->get();
 
-       if ($this->tahun and $this->bulan) {
-            $kas = cash::orderBy('tgl_kas')->whereMonth('tgl_kas', $this->bulan)->whereYear('tgl_kas',$this->tahun)->get();
+       if ($this->tahun and $this->bulan or $this->bulan_akhir) {
+            $kas = cash::orderBy('tgl_kas')
+            ->whereBetween('tgl_kas', ["$this->tahun-$this->bulan-01","$this->tahun-$this->bulan_akhir-31"])
+                ->get();
 
             $total = cash::orderBy('tgl_kas')->whereMonth('tgl_kas', '<' , $this->bulan)->whereYear('tgl_kas',$this->tahun)->get();
 

@@ -42,8 +42,9 @@
           <option value="12">Desember</option>
         </select>
       </div>
-      <div class="col-md-2">
-        <button id="exportWord" class="btn btn-primary">Export Word</button>
+      <div class="col-md-4">
+        <button id="exportWord" class="btn btn-primary mt-2">Export Word</button>
+        <button id="exportPdf" class="btn btn-primary mt-2CSS Styling & Animations">Export PDF</button>
       </div>
     </div>
   </div>
@@ -120,6 +121,15 @@
             return 0;
         }
         window.location.href='tanggungExport?tahun='+ tahun +'&bulan='+ bulan
+    })
+    $('#exportPdf').on('click',function(){
+        let tahun=$('#tahun').val();
+        let bulan=$('#bulan').val();
+        if (!tahun) {
+            alert('Tahun Tidak Boleh Kosong')
+            return 0;
+        }
+        window.location.href='tanggungExportPdf?tahun='+ tahun +'&bulan='+ bulan
     })
   ;(function($) {
     'use strict'

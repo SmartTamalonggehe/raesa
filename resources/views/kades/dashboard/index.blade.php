@@ -57,6 +57,51 @@
           <div class="cui-utils-margin-fix">
             <!-- -->
           </div>
+
+
+
+          <div class="card" data-order-id="card-11">
+            <div class="card-header">
+              <div class="pull-right cui-utils-sortable-control">
+                <i
+                  class="icmn-minus mr-2 cui-utils-sortable-collapse"
+                  data-toggle="tooltip"
+                  data-placement="left"
+                  title=""
+                  data-original-title="Collapse"
+                ></i>
+                <i
+                  class="icmn-plus mr-2 cui-utils-sortable-uncollapse"
+                  data-toggle="tooltip"
+                  data-placement="left"
+                  title=""
+                  data-original-title="Uncollapse"
+                ></i>
+                <i
+                  class="icmn-cross cui-utils-sortable__close"
+                  data-toggle="tooltip"
+                  data-placement="left"
+                  title=""
+                  data-original-title="Remove"
+                ></i>
+              </div>
+              <div class="cui-utils-title"><strong>Month Site Visits Growth, %</strong></div>
+              <span class="mr-2 nowrap">
+                <span class="cui-utils-donut cui-utils-donut-primary"></span>
+                Pemasukan
+              </span>
+              <span class="mr-2 nowrap">
+                <span class="cui-utils-donut cui-utils-donut-danger"></span>
+                Pengeluaran
+              </span>
+            </div>
+            <div class="card-body">
+              <div class="chart-overlapping-bar height-300 chartist"></div>
+            </div>
+          </div>
+
+
+
         </div>
       </div>
     </div>
@@ -258,7 +303,7 @@
           [
             '',
             {
-              seriesBarDistance: 5,
+              seriesBarDistance: 7,
               axisX: {
                 labelInterpolationFnc: function(value) {
                   return value[0]

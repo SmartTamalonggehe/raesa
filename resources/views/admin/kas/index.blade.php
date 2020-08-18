@@ -12,11 +12,10 @@
     <span class="cui-utils-title">
       <strong>@yield('judul')</strong>
     </span>
-    <button type="button" id="tambah" class="btn btn-primary float-right btn-rounded">Tambah Data</button>
   </div>
   <div class="card-body">
     <div class="row">
-        <h5>Tampilkan Berdasarkan</h5>      
+        <h5>Tampilkan Berdasarkan</h5>
       <div class="col-4">
         <select name="bulan" id="bulan" class="select2">
           <option value="">Pilih Bulan</option>
@@ -44,7 +43,7 @@
       </div>
       <div class="col-lg-12">
         <p class="text-muted">
-          
+
         </p>
         <div class="mb-5">
           <div id="tampil"></div>
